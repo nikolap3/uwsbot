@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "main": "Program.cs",
     "scripts": {
-        "start": "node Program.cs"
+        "start": "node Program"
     },
     "dependencies": {
         "discord.net": "1.0.2"
