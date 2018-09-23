@@ -1,1 +1,1 @@
-worker: $HOME/Program.cs
+worker: $HOME/ConsoleApp1/Program.cs
