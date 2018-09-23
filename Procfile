@@ -1,1 +1,1 @@
-worker: dotnet Program
+worker: csc Program
