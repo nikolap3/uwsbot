@@ -1,1 +1,1 @@
-worker: csc Program.cs
+worker: csc ./ConsoleApp1/Program.cs
