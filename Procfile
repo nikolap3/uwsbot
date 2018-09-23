@@ -1,1 +1,2 @@
-worker: ls
+worker: cd $home
+ls
