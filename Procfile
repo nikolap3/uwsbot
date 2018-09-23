@@ -1,1 +1,1 @@
-worker: csc Program
+worker: csc Program.cs
