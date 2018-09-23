@@ -1,1 +1,1 @@
-worker: $HOME/Program.cs
+worker: ls
