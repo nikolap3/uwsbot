@@ -1,1 +1,1 @@
-worker: node Program
+worker: dotnet Program
