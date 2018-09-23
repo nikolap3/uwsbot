@@ -1,2 +1,2 @@
-worker: cd $home
-ls
+worker: ConsoleApp1/Program.cs
+
