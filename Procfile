@@ -1,1 +1,2 @@
-worker: dotnet run ConsoleApp1.dll
+worker: run ConsoleApp1.dll
+//dotnet 
