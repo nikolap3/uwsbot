@@ -228,6 +228,69 @@ namespace consoleDOTnetcore
                 randomNumber = random.Next(min, max+1);
                 await context.Channel.SendMessageAsync("<@"+iD+"> "+" rolled "+randomNumber.ToString());
             }
+            else if (msg.StartsWith("u!rps"))
+             {
+                 msg = msg.Replace("u!rps ", "");
+                 Random random = new Random();
+                 int randomNumber = random.Next(0, 3);
+                 string[] names = Pings.Split(msg);
+                 int[] threw = new int[names.Length];
+ 
+ 
+                 for (int i = 0; i < names.Length; i++)
+                 {
+                     randomNumber = random.Next(0, 3);
+                     switch (randomNumber)
+                     {
+                         case 0:
+                             threw[i]=randomNumber;
+                             newmsg = newmsg + names[i] + ": :v: \n";
+                             break;
+                         case 1:
+                             threw[i] = randomNumber;
+                             newmsg = newmsg +names[i] + ": :fist: \n";
+                             break;
+                         case 2:
+                             threw[i] = randomNumber;
+                             newmsg = newmsg + names[i] + ": :hand_splayed: \n";
+                             break;
+                     }
+                     Console.WriteLine((i+""+ threw[i]).ToString());
+                 }
+ 
+                 int win = 0;
+                 int winnie = 0;
+                 Console.WriteLine(("\nlenght je"+names.Length).ToString());
+                 for (int i = 0; i < names.Length; i++)
+                 {
+                     win = 0;
+                     for (int j = 0; j < names.Length ; j++)
+                     {
+                         if (i == j) continue;
+                         if (threw[i] == 1 && threw[j] == 0)
+                         {
+                             win++;
+                             if (win == names.Length - 1) winnie = i+1;
+                         }
+                         else if (threw[i] == 2 && threw[j] == 1)
+                         {
+                             win++;
+                             if (win == names.Length - 1) winnie = i+1;
+                         }
+                         else if (threw[i] == 0 && threw[j] == 2)
+                         {
+                             win++;
+                             if (win == names.Length - 1) winnie = i+1;
+                         }
+ 
+                     }
+                 }
+                 Console.WriteLine(("\ntrenutni winnie je " + winnie).ToString());
+                 if (winnie != 0) newmsg = newmsg + names[winnie-1] + " WINS";
+                 else if (winnie == 0 && win != 0) newmsg = newmsg + "NO ONE WINS";
+                 else newmsg = newmsg + "NO RESULT";
+                 await message.Channel.SendMessageAsync(newmsg);
+             }
             else if (msg.StartsWith("u!slap "))
             {
                 string title = "";
