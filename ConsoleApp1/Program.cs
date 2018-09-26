@@ -285,6 +285,8 @@ namespace consoleDOTnetcore
                     title = user + " slaps " + iuser.Username + " ";
                 }
                 string[] gif = new string[0];
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494144313404555274/giphy.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147027064717322/3b3c291b732c757fc2a9d0f18d34402e37349b73_hq.gif");
                 gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147468787843092/original.gif");
                 gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147323169865728/tumblr_mflza5vE4o1r72ht7o2_400.gif");
                 gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147192068767744/never_ending_bitch_slap_by_yindragon-d4kiubr.gif");
