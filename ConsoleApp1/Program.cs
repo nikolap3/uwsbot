@@ -297,7 +297,7 @@ namespace consoleDOTnetcore
             }
             else if (msg.StartsWith("u!help"))
             {
-                newmsg = "'''u!countdown <number> - counts down from a number \n u!rps < player 1 > < player 2 >...... [player n] - plays a rock, paper, scissors game with all the players\n u!coin[number] - flips a coin x times\n u!team < person 1 >< person 2 > ..........[person n] - makes teams of 2 with all the people mentioned\n u!dice < number 1 >[number 2] - randomly chooses a number from 1 to number1 or a number in between number1 and number2 \n u!slap <person1> - slaps \n <something> -are necessary inputs \n  [something] -are optional inputs'''";
+                newmsg = "```u!countdown <number> - counts down from a number \n u!rps < player 1 > < player 2 >...... [player n] - plays a rock, paper, scissors game with all the players\n u!coin[number] - flips a coin x times\n u!team < person 1 >< person 2 > ..........[person n] - makes teams of 2 with all the people mentioned\n u!dice < number 1 >[number 2] - randomly chooses a number from 1 to number1 or a number in between number1 and number2 \n u!slap <person1> - slaps \n <something> -are necessary inputs \n  [something] -are optional inputs```";
                 await context.Channel.SendMessageAsync(newmsg);
             }
             
