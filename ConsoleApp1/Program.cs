@@ -149,7 +149,6 @@ namespace consoleDOTnetcore
                     await Task.Delay(2000);
                     await context.Channel.SendMessageAsync(i.ToString());
                 }
-                await context.Channel.SendMessageAsync(messageType.ToString());
             }
             else if (msg.StartsWith("u!coin"))
             {
