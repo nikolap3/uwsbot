@@ -246,10 +246,11 @@ namespace consoleDOTnetcore
                     title = user + " slaps " + iuser.Username + " ";
                 }
                 string[] gif = new string[0];
-                Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147468787843092/original.gif");
-                Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147323169865728/tumblr_mflza5vE4o1r72ht7o2_400.gif");
-                Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147192068767744/never_ending_bitch_slap_by_yindragon-d4kiubr.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147468787843092/original.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147323169865728/tumblr_mflza5vE4o1r72ht7o2_400.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147192068767744/never_ending_bitch_slap_by_yindragon-d4kiubr.gif");
                 randomNumber = random.Next(0, gif.Length);
+                Console.WriteLine(gif.Length.ToString());
                 var builder = new EmbedBuilder().WithTitle(title).WithImageUrl(gif[randomNumber]);
                 var embed = builder.Build();
                 await context.Channel.SendMessageAsync(    "",    embed: embed);
