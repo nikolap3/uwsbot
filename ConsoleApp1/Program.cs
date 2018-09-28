@@ -296,6 +296,64 @@ namespace consoleDOTnetcore
                 var embed = builder.Build();
                 await context.Channel.SendMessageAsync(    "",    embed: embed);
             }
+            else if (msg.StartsWith("u!kick "))
+            {
+                string title = "";
+                msg = msg.Replace("u!kick", "");
+                Random random = new Random();
+                int randomNumber = random.Next(0, 3);
+                string[] names = Pings.Split(msg);
+                if (names.Length == 0 || names[0] == ("<@" + iD + ">").ToString())
+                    title = user + " kicks themself";
+                else
+                {
+                    names[0] = names[0].Remove(0, 2);
+                    names[0] = names[0].Replace(">", "");
+                    ulong.TryParse(names[0], out ulong result);
+                    iuser = await socketChannel.GetUserAsync(result);
+                    title = user + " kicks " + iuser.Username + " ";
+                }
+                string[] gif = new string[0];
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494562631588511744/kick5.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494562673619369994/kick1.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494562720549568512/kick2.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494577333576138763/kick3.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494562816133431296/kick4.gif");
+                randomNumber = random.Next(0, gif.Length);
+                Console.WriteLine(gif.Length.ToString());
+                var builder = new EmbedBuilder().WithTitle(title).WithImageUrl(gif[randomNumber]);
+                var embed = builder.Build();
+                await context.Channel.SendMessageAsync(    "",    embed: embed);
+            }
+            else if (msg.StartsWith("u!gaykiss "))
+            {
+                string title = "";
+                msg = msg.Replace("u!gaykiss", "");
+                Random random = new Random();
+                int randomNumber = random.Next(0, 3);
+                string[] names = Pings.Split(msg);
+                if (names.Length == 0 || names[0] == ("<@" + iD + ">").ToString())
+                    title = user + " kisses themself";
+                else
+                {
+                    names[0] = names[0].Remove(0, 2);
+                    names[0] = names[0].Replace(">", "");
+                    ulong.TryParse(names[0], out ulong result);
+                    iuser = await socketChannel.GetUserAsync(result);
+                    title = user + " gaykisses " + iuser.Username + " ";
+                }
+                string[] gif = new string[0];
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494576499051986964/gk1.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494576517007933440/gk4.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494576517670633482/gk3.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494576520635875328/gk2.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494576524226330634/tumblr_inline_n67apaUGX81rgg4k4.gif");
+                randomNumber = random.Next(0, gif.Length);
+                Console.WriteLine(gif.Length.ToString());
+                var builder = new EmbedBuilder().WithTitle(title).WithImageUrl(gif[randomNumber]);
+                var embed = builder.Build();
+                await context.Channel.SendMessageAsync(    "",    embed: embed);
+            }
             else if (msg.StartsWith("u!help"))
             {
                 newmsg = "```u!countdown <number> - counts down from a number \n\nu!rps < player 1 > < player 2 >...... [player n] - plays a rock, paper, scissors game with all the players\n\nu!coin[number] - flips a coin x times\n u!team < person 1 >< person 2 > ..........[person n] - makes teams of 2 with all the people mentioned\n\nu!dice < number 1 >[number 2] - randomly chooses a number from 1 to number1 or a number in between number1 and number2 \n\nu!slap <person1> - slaps \n\n\n<something> -are necessary inputs \n[something] -are optional inputs```";
