@@ -85,6 +85,37 @@ namespace consoleDOTnetcore
     {
         public static void Main(string[] args) => new Program().MainAsync().GetAwaiter().GetResult();
 
+        public async Task Teaming(string msg, SocketMessage context)
+        {
+            string newmsg = "";
+
+            msg = msg.Replace("u!team ", " ");
+                int n = WordCounting.CountWords1(msg, "@") + 1;
+
+                string[] msg1 = Pings.Split(msg);
+
+                new Random().Shuffle(msg1);
+
+                int j = msg1.Length;//3
+                for (int i = 0; i < ((msg1.Length) / 2); i++)
+                {
+                    j--;
+                    if (j == i)
+                    {
+                        await context.Channel.SendMessageAsync((msg1[i].ToString() + " is alone").ToString());
+                        break;
+                    }
+                    else if (i - j == 1)
+                    {
+                        newmsg += (msg1[i].ToString() + " is alone").ToString();
+                        break;
+                    }
+                    newmsg += ("Team " + (i + 1).ToString() + ": " + msg1[i].ToString() + " and " + msg1[j].ToString() + "\n").ToString();
+
+                }
+
+                await context.Channel.SendMessageAsync(newmsg);
+        }
         public async Task MainAsync()
         {
             var client = new DiscordSocketClient();
@@ -112,7 +143,8 @@ namespace consoleDOTnetcore
             string msg = context.Content;
             if (msg.StartsWith("u!team "))
             {
-                msg = msg.Replace("u!team ", " ");
+                await teaming(msg);
+                /*msg = msg.Replace("u!team ", " ");
                 int n = WordCounting.CountWords1(msg, "@") + 1;
 
                 string[] msg1 = Pings.Split(msg);
@@ -139,7 +171,7 @@ namespace consoleDOTnetcore
 
 
 
-                await context.Channel.SendMessageAsync(newmsg);
+                await context.Channel.SendMessageAsync(newmsg);*/
             }
             else if (msg.StartsWith("u!countdown "))
             {
