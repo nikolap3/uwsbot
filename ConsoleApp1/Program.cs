@@ -130,10 +130,10 @@ namespace consoleDOTnetcore
                     }
                     else if (i - j == 1)
                     {
-                        newmsg = newmsg + (msg1[i].ToString() + " is alone").ToString();
+                        newmsg += (msg1[i].ToString() + " is alone").ToString();
                         break;
                     }
-                    newmsg = newmsg + ("Team " + (i + 1).ToString() + ": " + msg1[i].ToString() + " and " + msg1[j].ToString() + "\n").ToString();
+                    newmsg += ("Team " + (i + 1).ToString() + ": " + msg1[i].ToString() + " and " + msg1[j].ToString() + "\n").ToString();
 
                 }
 
