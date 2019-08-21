@@ -91,7 +91,7 @@ namespace consoleDOTnetcore
 
             client.Log += Log;
             client.MessageReceived += MessageReceived;
-            string token = "NDgxMTg4NzgxMzI0NzYzMTM4.Dl2FMQ.73-QfXwcU4a-o3IlcmNCFmRUdgE"; //uws bot token Remember to keep this private!
+            string token = "NDgxMTg4NzgxMzI0NzYzMTM4.XV0sqg.LgnV5-HnVs9dBU5vu-Qr5RaaLhM"; //uws bot token Remember to keep this private!
             //string token = "NDk0NTIwMDY0NDIzNDkzNjMy.Do0ttw.zagIXZTyWMeICcK1nCTz2nFoDYE";//test bot
             await client.LoginAsync(TokenType.Bot, token);
             await client.StartAsync();
