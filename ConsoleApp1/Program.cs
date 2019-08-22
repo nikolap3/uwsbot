@@ -91,8 +91,7 @@ namespace consoleDOTnetcore
 
             client.Log += Log;
             client.MessageReceived += MessageReceived;
-            string token = "NDgxMTg4NzgxMzI0NzYzMTM4.XV0sqg.LgnV5-HnVs9dBU5vu-Qr5RaaLhM"; //uws bot token Remember to keep this private!
-            //string token = "NDk0NTIwMDY0NDIzNDkzNjMy.Do0ttw.zagIXZTyWMeICcK1nCTz2nFoDYE";//test bot
+            string token = Environment.GetEnvironmentVariable("Discord_Token"); //uws bot token Remember to keep this private
             await client.LoginAsync(TokenType.Bot, token);
             await client.StartAsync();
             await Task.Delay(-1);
@@ -290,6 +289,71 @@ namespace consoleDOTnetcore
                 gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147468787843092/original.gif");
                 gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147323169865728/tumblr_mflza5vE4o1r72ht7o2_400.gif");
                 gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/316675507628539905/494147192068767744/never_ending_bitch_slap_by_yindragon-d4kiubr.gif");
+                randomNumber = random.Next(0, gif.Length);
+                Console.WriteLine(gif.Length.ToString());
+                var builder = new EmbedBuilder().WithTitle(title).WithImageUrl(gif[randomNumber]);
+                var embed = builder.Build();
+                await context.Channel.SendMessageAsync(    "",    embed: embed);
+            }
+            
+
+            else if (msg.StartsWith("u!hug "))
+            {
+                string title = "";
+                msg = msg.Replace("u!hug", "");
+                Random random = new Random();
+                int randomNumber = random.Next(0, 3);
+                string[] names = Pings.Split(msg);
+                if (names.Length == 0 || names[0] == ("<@" + iD + ">").ToString())
+                    title = user + " hugs themself";
+                else
+                {
+                    names[0] = names[0].Remove(0, 2);
+                    names[0] = names[0].Replace(">", "");
+                    ulong.TryParse(names[0], out ulong result);
+                    iuser = await socketChannel.GetUserAsync(result);
+                    title = user + " hugs " + iuser.Username + " ";
+                }
+                string[] gif = new string[0];
+                gif = Pings.add(gif, "https://media.tenor.com/images/d5c635dcb613a9732cfd997b6a048f80/tenor.gif");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/42922e87b3ec288b11f59ba7f3cc6393/tenor.gif?itemid=5634630");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/1069921ddcf38ff722125c8f65401c28/tenor.gif?itemid=11074788");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/460c80d4423b0ba75ed9592b05599592/tenor.gif?itemid=5044460");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/44b4b9d5e6b4d806b6bcde2fd28a75ff/tenor.gif?itemid=9383138");
+                gif = Pings.add(gif, "https://images-ext-2.discordapp.net/external/dwTWixM8K-ZizvgespNWYLLV3LtHY1J3pen3pq4IGGQ/https/i.giphy.com/rSNAVVANV5XhK.gif");
+                gif = Pings.add(gif, "https://media.tenor.com/images/a756a73934fb6252bb9acf174d019c73/tenor.gif");
+                gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/613686019077832704/613687991399088138/Friends-1.gif");
+                randomNumber = random.Next(0, gif.Length);
+                Console.WriteLine(gif.Length.ToString());
+                var builder = new EmbedBuilder().WithTitle(title).WithImageUrl(gif[randomNumber]);
+                var embed = builder.Build();
+                await context.Channel.SendMessageAsync(    "",    embed: embed);
+            }
+            else if (msg.StartsWith("u!pat "))
+            {
+                string title = "";
+                msg = msg.Replace("u!pat", "");
+                Random random = new Random();
+                int randomNumber = random.Next(0, 3);
+                string[] names = Pings.Split(msg);
+                if (names.Length == 0 || names[0] == ("<@" + iD + ">").ToString())
+                    title = user + " pats themself";
+                else
+                {
+                    names[0] = names[0].Remove(0, 2);
+                    names[0] = names[0].Replace(">", "");
+                    ulong.TryParse(names[0], out ulong result);
+                    iuser = await socketChannel.GetUserAsync(result);
+                    title = user + " pats " + iuser.Username + " ";
+                }
+                string[] gif = new string[0];
+                gif = Pings.add(gif, "https://media1.tenor.com/images/f5176d4c5cbb776e85af5dcc5eea59be/tenor.gif?itemid=5081286");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/f330c520a8dfa461130a799faca13c7e/tenor.gif?itemid=13911345");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/54722063c802bac30d928db3bf3cc3b4/tenor.gif?itemid=8841561");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/282cc80907f0fe82d9ae1f55f1a87c03/tenor.gif?itemid=12018857");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/1e92c03121c0bd6688d17eef8d275ea7/tenor.gif?itemid=9920853");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/7938cdb8aa798486e2e2f1d997ea7797/tenor.gif?itemid=14816799");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/5466adf348239fba04c838639525c28a/tenor.gif?itemid=13284057");
                 randomNumber = random.Next(0, gif.Length);
                 Console.WriteLine(gif.Length.ToString());
                 var builder = new EmbedBuilder().WithTitle(title).WithImageUrl(gif[randomNumber]);
