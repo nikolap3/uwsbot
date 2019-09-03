@@ -99,7 +99,7 @@ namespace consoleDOTnetcore
 
         private async Task MessageReceived(SocketMessage context)
         {
-            static bool countd = false;
+            ///static bool countd = false;
             SocketUser socketUser;
             socketUser = context.Author;
             MessageSource messageType = context.Source;
@@ -144,7 +144,7 @@ namespace consoleDOTnetcore
             else if (msg.StartsWith("u!countdown "))
             {
                 msg = msg.Replace("u!countdown", " ");
-                countd=true;
+                //countd=true;
                 for (int i = int.Parse(msg); i > 0; i--)
                 {
                     if(!countd)break;
@@ -459,11 +459,6 @@ namespace consoleDOTnetcore
             {
                 newmsg = "```u!countdown <number> - counts down from a number \n\nu!rps < player 1 > < player 2 >...... [player n] - plays a rock, paper, scissors game with all the players\n\nu!coin[number] - flips a coin x times\n u!team < person 1 >< person 2 > ..........[person n] - makes teams of 2 with all the people mentioned\n\nu!dice < number 1 >[number 2] - randomly chooses a number from 1 to number1 or a number in between number1 and number2 \n\nu!slap <person1> - slaps\n\nu!gaykiss <person1> - gaykiss a person\n\nu!kick <person1> - kick a guy\n\n\n<something> -are necessary inputs \n[something] -are optional inputs```";
                 await context.Channel.SendMessageAsync(newmsg);
-            }
-            else if(msg.StartWith("u!stop"))
-            {
-                countd = false;
-                await context.Channel.SendMessageAsync("Set to stop");
             }
             
         }
