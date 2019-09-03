@@ -99,6 +99,7 @@ namespace consoleDOTnetcore
 
         private async Task MessageReceived(SocketMessage context)
         {
+            static bool countd = false;
             SocketUser socketUser;
             socketUser = context.Author;
             MessageSource messageType = context.Source;
@@ -143,8 +144,10 @@ namespace consoleDOTnetcore
             else if (msg.StartsWith("u!countdown "))
             {
                 msg = msg.Replace("u!countdown", " ");
+                countd=true;
                 for (int i = int.Parse(msg); i > 0; i--)
                 {
+                    if(!countd)break;
                     await Task.Delay(2000);
                     await context.Channel.SendMessageAsync(i.ToString());
                 }
@@ -295,8 +298,35 @@ namespace consoleDOTnetcore
                 var embed = builder.Build();
                 await context.Channel.SendMessageAsync(    "",    embed: embed);
             }
-            
-
+            else if (msg.StartsWith("u!cuddle "))
+            {
+                string title = "";
+                msg = msg.Replace("u!cuddle", "");
+                Random random = new Random();
+                int randomNumber = random.Next(0, 3);
+                string[] names = Pings.Split(msg);
+                if (names.Length == 0 || names[0] == ("<@" + iD + ">").ToString())
+                    title = user + " cuddles themself";
+                else
+                {
+                    names[0] = names[0].Remove(0, 2);
+                    names[0] = names[0].Replace(">", "");
+                    ulong.TryParse(names[0], out ulong result);
+                    iuser = await socketChannel.GetUserAsync(result);
+                    title = user + " cuddles " + iuser.Username + " ";
+                }
+                string[] gif = new string[0];
+                gif = Pings.add(gif, "https://media1.tenor.com/images/dc2bfb487be830983df6f8cc61e89368/tenor.gif?itemid=13797838");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/54e97e0cdeefea2ee6fb2e76d141f448/tenor.gif?itemid=11378437");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/88f1121f72f5fbfe4bc90c51cf82937f/tenor.gif?itemid=5047796");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/adeb030aaa5a2a3d16abdc58be4d1448/tenor.gif?itemid=11733535");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/4a211d5c5d076ad8795d8a82f9f01c29/tenor.gif?itemid=13221038");
+                randomNumber = random.Next(0, gif.Length);
+                Console.WriteLine(gif.Length.ToString());
+                var builder = new EmbedBuilder().WithTitle(title).WithImageUrl(gif[randomNumber]);
+                var embed = builder.Build();
+                await context.Channel.SendMessageAsync(    "",    embed: embed);
+            }
             else if (msg.StartsWith("u!hug "))
             {
                 string title = "";
@@ -323,6 +353,10 @@ namespace consoleDOTnetcore
                 gif = Pings.add(gif, "https://images-ext-2.discordapp.net/external/dwTWixM8K-ZizvgespNWYLLV3LtHY1J3pen3pq4IGGQ/https/i.giphy.com/rSNAVVANV5XhK.gif");
                 gif = Pings.add(gif, "https://media.tenor.com/images/a756a73934fb6252bb9acf174d019c73/tenor.gif");
                 gif = Pings.add(gif, "https://cdn.discordapp.com/attachments/613686019077832704/613687991399088138/Friends-1.gif");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/5845f40e535e00e753c7931dd77e4896/tenor.gif?itemid=9920978");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/7ece0d6e9306763eeea5e0c5284a3528/tenor.gif?itemid=14106855");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/7db5f172665f5a64c1a5ebe0fd4cfec8/tenor.gif?itemid=9200935");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/cd321aa5d055a7e02b52eea806b9797c/tenor.gif?itemid=12861205");
                 randomNumber = random.Next(0, gif.Length);
                 Console.WriteLine(gif.Length.ToString());
                 var builder = new EmbedBuilder().WithTitle(title).WithImageUrl(gif[randomNumber]);
@@ -354,6 +388,9 @@ namespace consoleDOTnetcore
                 gif = Pings.add(gif, "https://media1.tenor.com/images/1e92c03121c0bd6688d17eef8d275ea7/tenor.gif?itemid=9920853");
                 gif = Pings.add(gif, "https://media1.tenor.com/images/7938cdb8aa798486e2e2f1d997ea7797/tenor.gif?itemid=14816799");
                 gif = Pings.add(gif, "https://media1.tenor.com/images/5466adf348239fba04c838639525c28a/tenor.gif?itemid=13284057");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/183ff4514cbe90609e3f286adaa3d0b4/tenor.gif?itemid=5518321");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/573c5aa94d1ab4ba9d32f369d35e1c8d/tenor.gif?itemid=14848813");
+                gif = Pings.add(gif, "https://media1.tenor.com/images/8c1f6874db27c8227755a08b2b07740b/tenor.gif?itemid=10789367");
                 randomNumber = random.Next(0, gif.Length);
                 Console.WriteLine(gif.Length.ToString());
                 var builder = new EmbedBuilder().WithTitle(title).WithImageUrl(gif[randomNumber]);
@@ -388,7 +425,7 @@ namespace consoleDOTnetcore
                 var builder = new EmbedBuilder().WithTitle(title).WithImageUrl(gif[randomNumber]);
                 var embed = builder.Build();
                 await context.Channel.SendMessageAsync(    "",    embed: embed);
-            }
+            }/*
             else if (msg.StartsWith("u!gaykiss "))
             {
                 string title = "";
@@ -417,11 +454,16 @@ namespace consoleDOTnetcore
                 var builder = new EmbedBuilder().WithTitle(title).WithImageUrl(gif[randomNumber]);
                 var embed = builder.Build();
                 await context.Channel.SendMessageAsync(    "",    embed: embed);
-            }
+            }*/
             else if (msg.StartsWith("u!help"))
             {
                 newmsg = "```u!countdown <number> - counts down from a number \n\nu!rps < player 1 > < player 2 >...... [player n] - plays a rock, paper, scissors game with all the players\n\nu!coin[number] - flips a coin x times\n u!team < person 1 >< person 2 > ..........[person n] - makes teams of 2 with all the people mentioned\n\nu!dice < number 1 >[number 2] - randomly chooses a number from 1 to number1 or a number in between number1 and number2 \n\nu!slap <person1> - slaps\n\nu!gaykiss <person1> - gaykiss a person\n\nu!kick <person1> - kick a guy\n\n\n<something> -are necessary inputs \n[something] -are optional inputs```";
                 await context.Channel.SendMessageAsync(newmsg);
+            }
+            else if(msg.StartWith("u!stop"))
+            {
+                countd = false;
+                await context.Channel.SendMessageAsync("Set to stop");
             }
             
         }
