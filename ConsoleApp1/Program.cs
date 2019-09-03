@@ -147,7 +147,7 @@ namespace consoleDOTnetcore
                 //countd=true;
                 for (int i = int.Parse(msg); i > 0; i--)
                 {
-                    if(!countd)break;
+                    //if(!countd)break;
                     await Task.Delay(2000);
                     await context.Channel.SendMessageAsync(i.ToString());
                 }
